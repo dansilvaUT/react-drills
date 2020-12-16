@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      items: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'PostreSQL', 'React', 'Ruby', 'Java'],
+      stringToSearch: ''
+    }
+  }
+
+  filterlist(value) {
+    this.setState({ stringToSearch: value });
+  }
+
+  render() {
+
+    let languages = this.state.items
+      .filter(element => {
+        return element.includes(this.state.stringToSearch)
+      })
+      .map((element, index) => {
+        return <p key={index}>{element}</p>
+      })
+    return (
+      <div className="App">
+        <input onChange={e => { this.filterlist(e.target.value) }} />
+        {languages}
+      </div>
+    );
+  }
+
 }
 
 export default App;

@@ -18,7 +18,7 @@ class App extends Component {
     console.log(this.state.userInput);
     return (
       <div className="App">
-        <input value={this.state.userInput} onChange={e => { this.handleChange(e.target.value) }} />
+        <input onChange={e => { this.handleChange(e.target.value) }} />
         <p>{this.state.userInput}</p>
       </div>
     );

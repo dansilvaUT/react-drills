@@ -10,15 +10,14 @@ class App extends Component {
     }
   }
 
-  handleChange(value) {
+  handleInputChange(value) {
     this.setState({ userInput: value });
   }
 
   render() {
-    console.log(this.state.userInput);
     return (
       <div className="App">
-        <input onChange={e => { this.handleChange(e.target.value) }} />
+        <input onChange={e => { this.handleInputChange(e.target.value) }} />
         <p>{this.state.userInput}</p>
       </div>
     );

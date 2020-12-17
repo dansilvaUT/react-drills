@@ -5,28 +5,27 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      items: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'PostreSQL', 'React', 'Ruby', 'Java'],
-      stringToSearch: ''
+      list: ['pizza', 'pie', 'chocoloate', 'candy', 'pie', 'soda'],
+      userInput: ''
     }
   }
 
-  filterlist(value) {
-    this.setState({ stringToSearch: value });
+  handleItemSearch(value) {
+    this.setState({ userInput: value });
   }
 
   render() {
-
-    let languages = this.state.items
-      .filter(element => {
-        return element.includes(this.state.stringToSearch)
-      })
-      .map((element, index) => {
-        return <p key={index}>{element}</p>
-      })
+    console.log(this.state.userInput)
     return (
       <div className="App">
-        <input onChange={e => { this.filterlist(e.target.value) }} />
-        {languages}
+        <input onChange={e => { this.handleItemSearch(e.target.value) }} />
+        <h1>List Items</h1>
+        {this.state.list.filter((element) => {
+          return element.includes(this.state.userInput);
+        })
+          .map((element, index) => {
+            return <p key={index}>{element}</p>
+          })}
       </div>
     );
   }

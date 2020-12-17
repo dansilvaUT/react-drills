@@ -5,15 +5,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      items: ['Java', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git', 'Node.js', 'React']
+      list: ['pizza', 'burgers', 'soda', 'chocolate', 'candy', 'cereal', 'pie']
     }
   }
   render() {
+    console.log(this.state.list)
     return (
       <div className="App">
-        <h1>Languages</h1>
-        {this.state.items.map((element, index) => {
-          return <h4 key={index}>{element}</h4>
+        {this.state.list.map((element, index) => {
+          return <p key={index}>{element}</p>
         })}
       </div>
     );

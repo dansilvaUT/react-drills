@@ -6,13 +6,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png'
+      imageURL: 'https://www.doi.gov/sites/doi.gov/files/blog-post/thumbnail-images/ZionNPTomMorrisSmall.jpg'
     }
   }
   render() {
     return (
       <div className="App">
-        <Image imgSrc={this.state.imageSrc} />
+        <Image src={this.state.imageURL} />
       </div>
     )
   }

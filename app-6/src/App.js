@@ -7,33 +7,35 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todoList: ['Learn React', 'Master JavaScript', 'Become a Web Developer'],
-      todoItem: ''
+      list: [],
+      item: ''
     }
+
+    this.addItem = this.addItem.bind(this);
   }
 
-  todoItem(value) {
-    this.setState({ todoItem: value });
+  handleItemInput(value) {
+    this.setState({ item: value });
   }
 
-  addTodo() {
-    let item = this.state.todoItem;
-    const todoList = this.state.todoList;
-    todoList.push(item);
-    this.setState({ todoList: todoList, todoItem: '' });
+  addItem() {
+    // const list = this.state.list.splice();
+    // list.push(this.state.item);
+    // this.setState({ list: list, item: '' });
+    this.setState({ list: [...this.state.list, this.state.item], item: '' })
   }
 
   render() {
-    console.log("Todo:", this.state.todoItem)
+    console.log('list', this.state.list)
+    const displayTodos = this.state.list.map((element, index) => (
+      <Todo key={index} item={element} />
+    ))
     return (
       <div className="App">
         <h1>My to-do list:</h1>
-        <input value={this.state.todoItem} type="text" onChange={e => { this.todoItem(e.target.value) }} />
-        <button onClick={() => this.addTodo()}>Add</button>
-        {this.state.todoList.map((element, index) => {
-          return <Todo key={index} todo={element} />
-        })}
-
+        <input value={this.state.item} onChange={e => this.handleItemInput(e.target.value)} />
+        <button onClick={this.addItem}>Add</button>
+        {displayTodos}
       </div>
     );
   }

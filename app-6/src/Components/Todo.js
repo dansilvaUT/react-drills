@@ -2,7 +2,9 @@ import React from 'react';
 
 const Todo = props => {
     return (
-        <p>{props.todo}</p>
+        <section>
+            {props.item}
+        </section>
     )
 }
 

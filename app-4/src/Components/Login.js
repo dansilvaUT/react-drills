@@ -5,8 +5,9 @@ class Login extends Component {
         super();
         this.state = {
             username: '',
-            password: '',
+            password: ''
         }
+        this.alertUser = this.alertUser.bind(this);
     }
 
     handleUsernameChange(value) {
@@ -17,7 +18,7 @@ class Login extends Component {
         this.setState({ password: value });
     }
 
-    submitCredentials() {
+    alertUser() {
         alert(`Username: ${this.state.username} Password: ${this.state.password}`);
     }
 
@@ -25,8 +26,8 @@ class Login extends Component {
         return (
             <div className="login-component">
                 <input type="text" onChange={e => this.handleUsernameChange(e.target.value)} />
-                <input type="password" onChange={e => this.handlePasswordChange(e.target.value)} />
-                <button onClick={() => this.submitCredentials()}>Login</button>
+                <input type="text" onChange={e => this.handlePasswordChange(e.target.value)} />
+                <button onClick={this.alertUser}>Login</button>
             </div>
         )
     }

@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'react';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      list: ['pizza', 'burgers', 'soda', 'chocolate', 'candy', 'cereal', 'pie']
+      list: ['HTML', 'CSS', 'JavaScript', 'SQL', 'PostgreSQL', 'React', 'Node.js', 'Java', 'C#']
     }
   }
   render() {
-    console.log(this.state.list)
+    let renderedList = this.state.list.map((item, index) => (
+      <h2 key={index}>{item}</h2>
+    ))
     return (
       <div className="App">
-        {this.state.list.map((element, index) => {
-          return <p key={index}>{element}</p>
-        })}
+        {renderedList}
       </div>
-    );
+    )
   }
 }
 

@@ -5,31 +5,28 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      list: ['pizza', 'pie', 'chocoloate', 'candy', 'pie', 'soda'],
-      userInput: ''
+      list: ['HTML', 'CSS', 'JavaScript', 'SQL', 'PostgreSQL', 'React', 'Node.js', 'Java', 'C#'],
+      input: ''
     }
   }
 
-  handleItemSearch(value) {
-    this.setState({ userInput: value });
+  handleInputSearch(value) {
+    this.setState({ input: value });
   }
 
   render() {
-    console.log(this.state.userInput)
+
     return (
       <div className="App">
-        <input onChange={e => { this.handleItemSearch(e.target.value) }} />
-        <h1>List Items</h1>
-        {this.state.list.filter((element) => {
-          return element.includes(this.state.userInput);
-        })
-          .map((element, index) => {
-            return <p key={index}>{element}</p>
-          })}
+        <input onChange={e => this.handleInputSearch(e.target.value)} />
+        {this.state.list.filter(item => {
+          return item.toLowerCase().includes(this.state.input.toLowerCase())
+        }).map((element, index) => {
+          return <h2 key={index}>{element}</h2>
+        })}
       </div>
-    );
+    )
   }
-
 }
 
 export default App;

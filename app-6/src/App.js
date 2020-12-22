@@ -8,38 +8,31 @@ class App extends Component {
     super();
     this.state = {
       list: [],
-      item: ''
+      todo: ''
     }
 
-    this.addItem = this.addItem.bind(this);
+    this.addTodo = this.addTodo.bind(this);
+
   }
 
-  handleItemInput(value) {
-    this.setState({ item: value });
+  handleInputChange(value) {
+    this.setState({ todo: value });
   }
 
-  addItem() {
-    // const list = this.state.list.splice();
-    // list.push(this.state.item);
-    // this.setState({ list: list, item: '' });
-    this.setState({ list: [...this.state.list, this.state.item], item: '' })
+  addTodo() {
+    this.setState({ list: [...this.state.list, this.state.todo], todo: '' });
   }
 
   render() {
-    console.log('list', this.state.list)
-    const displayTodos = this.state.list.map((element, index) => (
-      <Todo key={index} item={element} />
-    ))
     return (
       <div className="App">
         <h1>My to-do list:</h1>
-        <input value={this.state.item} onChange={e => this.handleItemInput(e.target.value)} />
-        <button onClick={this.addItem}>Add</button>
-        {displayTodos}
+        <input value={this.state.todo} onChange={e => this.handleInputChange(e.target.value)} />
+        <button onClick={() => this.addTodo()}>Add</button>
+        <Todo list={this.state.list} />
       </div>
-    );
+    )
   }
-
 }
 
 export default App;

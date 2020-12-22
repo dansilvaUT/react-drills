@@ -3,7 +3,9 @@ import React from 'react';
 const Todo = props => {
     return (
         <section>
-            {props.item}
+            {props.list.map((todo, index) => (
+                <h3 key={index}>{todo}</h3>
+            ))}
         </section>
     )
 }

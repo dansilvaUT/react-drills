@@ -4,28 +4,27 @@ class NewTask extends Component {
     constructor() {
         super();
         this.state = {
-            todoItem: ''
+            todo: ''
         }
-        this.addItem = this.addItem.bind(this);
+
+        this.addTodo = this.addTodo.bind(this);
     }
 
-
-    receiveTodo(value) {
-        this.setState({ todoItem: value });
+    handleInputChange(value) {
+        this.setState({ todo: value });
     }
 
-    addItem() {
-        this.props.addTodo(this.state.todoItem);
-        this.setState({ todoItem: '' });
+    addTodo() {
+        this.props.add(this.state.todo);
+        this.setState({ todo: '' });
     }
 
     render() {
         return (
             <section>
-                <input value={this.state.todoItem} onChange={e => { this.receiveTodo(e.target.value) }} />
-                <button onClick={this.addItem}>Add</button>
+                <input value={this.state.todo} onChange={e => this.handleInputChange(e.target.value)} />
+                <button onClick={() => this.addTodo()}>Add</button>
             </section>
-
         )
     }
 }

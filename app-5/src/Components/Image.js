@@ -2,7 +2,9 @@ import React from 'react';
 
 const Image = props => {
     return (
-        <img src={props.src} alt="pic-here" />
+        <section>
+            <img src={props.src} alt="pokemon-pic" />
+        </section>
     )
 }
 

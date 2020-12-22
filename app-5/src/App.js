@@ -6,17 +6,16 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      imageURL: 'https://www.doi.gov/sites/doi.gov/files/blog-post/thumbnail-images/ZionNPTomMorrisSmall.jpg'
+      url: 'https://wallpapercave.com/wp/NCJgtUD.jpg'
     }
   }
   render() {
     return (
       <div className="App">
-        <Image src={this.state.imageURL} />
+        <Image src={this.state.url} />
       </div>
     )
   }
-
 }
 
 export default App;
